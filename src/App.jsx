@@ -36,6 +36,30 @@ function App() {
     });
   };
 
+  const increaseQuantity = (id) => {
+    setCartItems(prevItems =>
+      prevItems.map(item =>
+        item.id === id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (id) => {
+    setCartItems(prevItems =>
+      prevItems.map(item =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
+
+  const removeItem = (id) => {
+    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
+  };
+
   const toggleCart = () => {
     setShowCart(!showCart);
   };
@@ -44,7 +68,14 @@ function App() {
     <>
       <Header cartCount={cartItems.length} toggleCart={toggleCart} />
       <FoodItemDetail foodData={data} addToCart={addToCart} />
-      {showCart && <CartModal cartItems={cartItems} toggleCart={toggleCart} />}
+      {showCart && 
+      <CartModal 
+      cartItems={cartItems} 
+      toggleCart={toggleCart} 
+      increaseQuantity={increaseQuantity}
+      decreaseQuantity={decreaseQuantity}
+      removeItem={removeItem}
+      />}
     </>
   );
 }
