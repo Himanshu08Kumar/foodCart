@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CounterContext } from "../context/CounterContext";
 
-const CartModal = ({
-  cartItems,
-  toggleCart,
-  increaseQuantity,
-  decreaseQuantity,
-  removeItem,
-}) => {
+const CartModal = () => {
+  const {
+    cartItems,
+    toggleCart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeItem,
+  } = useContext(CounterContext);
   const totalAmount = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
@@ -26,7 +28,10 @@ const CartModal = ({
               <button onClick={() => increaseQuantity(item.id)}>+</button>
               <button
                 onClick={() => removeItem(item.id)}
-                style={{color: "red"}}>&#128473;</button>
+                style={{ color: "red" }}
+              >
+                &#128473;
+              </button>
             </div>
           </li>
         ))}
