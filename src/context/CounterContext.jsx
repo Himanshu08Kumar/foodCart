@@ -10,7 +10,7 @@ const CounterProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://foodpanda-ttmz.onrender.com/meals/"); // Adjust to your API endpoint
+        const response = await fetch("http://localhost:3000/meals/"); // Adjust to your API endpoint
         const meals = await response.json();
         setData(meals);
       } catch (error) {
