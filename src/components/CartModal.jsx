@@ -28,9 +28,9 @@ const CartModal = () => {
               <button onClick={() => increaseQuantity(item.id)}>+</button>
               <button
                 onClick={() => removeItem(item.id)}
-                style={{ color: "red" }}
+                style={{ color: "red", fontWeight:"600"}}
               >
-                &#128473;
+                x
               </button>
             </div>
           </li>
