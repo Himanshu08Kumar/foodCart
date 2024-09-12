@@ -5,12 +5,12 @@ const CounterContext = createContext();
 const CounterProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]); // Track cart items
   const [showCart, setShowCart] = useState(false); // Toggle cart modal
-  const [data, setData] = useState([]); // Fetch meals data from backend
+  const [data, setData] = useState([]); 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/meals/"); // Adjust to your API endpoint
+        const response = await fetch("http://localhost:3000/meals/");
         const meals = await response.json();
         setData(meals);
       } catch (error) {
